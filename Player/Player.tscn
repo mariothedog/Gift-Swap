@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Player/Art/Idle Anim/Player_Idle_0.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Player/Art/Jump Anim/Player_Jump_0.png" type="Texture" id=7]
 [ext_resource path="res://Player/Art/Walk Anim/Player_Walk_3.png" type="Texture" id=8]
 [ext_resource path="res://Player/Art/Jump Anim/Player_Jump_1.png" type="Texture" id=9]
+[ext_resource path="res://UI/HUD.tscn" type="PackedScene" id=10]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -46,3 +47,5 @@ animation = "idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -7 )
 shape = SubResource( 2 )
+
+[node name="HUD" parent="." instance=ExtResource( 10 )]
