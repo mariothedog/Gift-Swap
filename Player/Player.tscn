@@ -1,0 +1,48 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Player/Player.gd" type="Script" id=1]
+[ext_resource path="res://Player/Art/Idle Anim/Player_Idle_0.png" type="Texture" id=2]
+[ext_resource path="res://Player/Art/Idle Anim/Player_Idle_1.png" type="Texture" id=3]
+[ext_resource path="res://Player/Art/Walk Anim/Player_Walk_2.png" type="Texture" id=4]
+[ext_resource path="res://Player/Art/Walk Anim/Player_Walk_0.png" type="Texture" id=5]
+[ext_resource path="res://Player/Art/Walk Anim/Player_Walk_1.png" type="Texture" id=6]
+[ext_resource path="res://Player/Art/Jump Anim/Player_Jump_0.png" type="Texture" id=7]
+[ext_resource path="res://Player/Art/Walk Anim/Player_Walk_3.png" type="Texture" id=8]
+[ext_resource path="res://Player/Art/Jump Anim/Player_Jump_1.png" type="Texture" id=9]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "idle",
+"speed": 2.5
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 4 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "walk",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 7 ), ExtResource( 9 ) ],
+"loop": false,
+"name": "jump",
+"speed": 10.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 25, 48 )
+
+[node name="Player" type="KinematicBody2D"]
+position = Vector2( 541.951, 429.58 )
+collision_layer = 2
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -7 )
+shape = SubResource( 2 )
