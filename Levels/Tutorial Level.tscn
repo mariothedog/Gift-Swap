@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Player/Art/Walk Anim/Player_Walk_1.png" type="Texture" id=1]
 [ext_resource path="res://Player/Art/Idle Anim/Player_Idle_1.png" type="Texture" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Player/Art/Jump Anim/Player_Jump_0.png" type="Texture" id=9]
 [ext_resource path="res://Tiles/Grass.png" type="Texture" id=10]
 [ext_resource path="res://Player/Art/Jump Anim/Player_Jump_1.png" type="Texture" id=11]
+[ext_resource path="res://Items/Item.tscn" type="PackedScene" id=12]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -115,6 +116,7 @@ tile_data = PoolIntArray( 1114112, 1, 0, 1114113, 1, 0, 1114114, 1, 0, 1114115, 
 
 [node name="Player" type="KinematicBody2D" parent="."]
 position = Vector2( 541.951, 429.58 )
+collision_layer = 2
 script = ExtResource( 7 )
 __meta__ = {
 "_edit_group_": true
@@ -127,3 +129,6 @@ animation = "idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 position = Vector2( 0, -7 )
 shape = SubResource( 6 )
+
+[node name="Item" parent="." instance=ExtResource( 12 )]
+position = Vector2( 772.145, 170.659 )
