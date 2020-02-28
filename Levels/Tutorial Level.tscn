@@ -73,6 +73,7 @@ __meta__ = {
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_right = 1024.0
 margin_bottom = 600.0
+mouse_filter = 2
 color = Color( 0.568627, 0.662745, 0.729412, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -89,4 +90,4 @@ tile_data = PoolIntArray( 1114112, 1, 0, 1114113, 1, 0, 1114114, 1, 0, 1114115, 
 
 [node name="Item" parent="." instance=ExtResource( 12 )]
 use_parent_material = true
-position = Vector2( 772.145, 170.659 )
+position = Vector2( 780, 500 )

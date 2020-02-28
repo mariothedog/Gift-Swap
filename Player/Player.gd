@@ -11,9 +11,6 @@ var jump = false
 
 var held_item = null setget update_hud
 
-func _ready():
-	pass
-
 func _physics_process(delta):
 	input()
 	movement(delta)
@@ -33,11 +30,10 @@ func input():
 		jump = true
 	
 	velocity.x = dir * SPEED
-	
-	# Other Input
-	#print(self.held_item)
-	if Input.is_action_just_pressed("drop_item") and held_item != null:
-		spawn_item(held_item)
+
+func _input(event):
+	if event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_LEFT and held_item != null:
+		spawn_item(held_item, event.position)
 		self.held_item = null
 
 func movement(delta):
@@ -69,14 +65,13 @@ func update_hud(item):
 func pick_up_item(item):
 	self.held_item = item
 
-func spawn_item(item):
+func spawn_item(item, pos):
 	var item_instance = item_scene.instance()
+	# TODO different item types
 	#item_instance.type = held_item.type
 	
-	#var offset
-	#if $AnimatedSprite.flip_h:
-	#	offset = Vector2(-60, 0)
-	#else:
-	#	offset = Vector2(60, 0)
-	item_instance.position = self.position# + offset
+	item_instance.position = pos
+	item_instance.use_parent_material = true
 	get_parent().add_child(item_instance)
+	if pos.distance_to(position) <= 70:
+		item_instance.delay()

@@ -7,5 +7,9 @@ func _on_Area2D_body_entered(body):
 		queue_free()
 		body.pick_up_item(self)
 
-func _on_Delay_before_pickupable_timeout():
+func delay():
+	$Area2D/CollisionShape2D.disabled = true
+	$"Pickupable Timer".start()
+
+func _on_Pickupable_Timer_timeout():
 	$Area2D/CollisionShape2D.disabled = false
