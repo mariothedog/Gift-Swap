@@ -18,14 +18,14 @@ animations = [ {
 "name": "idle",
 "speed": 2.5
 }, {
-"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 4 ), ExtResource( 8 ) ],
-"loop": true,
-"name": "walk",
-"speed": 10.0
-}, {
 "frames": [ ExtResource( 7 ), ExtResource( 9 ) ],
 "loop": false,
 "name": "jump",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 4 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "walk",
 "speed": 10.0
 } ]
 
@@ -33,7 +33,6 @@ animations = [ {
 extents = Vector2( 25, 48 )
 
 [node name="Player" type="KinematicBody2D"]
-position = Vector2( 541.951, 429.58 )
 collision_layer = 2
 script = ExtResource( 1 )
 __meta__ = {

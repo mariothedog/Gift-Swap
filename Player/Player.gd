@@ -45,12 +45,14 @@ func movement(delta):
 		velocity.y = -JUMP_SPEED
 
 func animate():
+	if abs(velocity.x) > 0:
+		$AnimatedSprite.flip_h = velocity.x < 0
+	
 	if jump:
 		$AnimatedSprite.play("jump")
 	else:
 		if is_on_floor():
 			if abs(velocity.x) > 0:
-				$AnimatedSprite.flip_h = velocity.x < 0
 				$AnimatedSprite.play("walk")
 			else:
 				$AnimatedSprite.play("idle")
