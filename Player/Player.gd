@@ -33,8 +33,18 @@ func input():
 
 func _input(event):
 	if event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_LEFT and held_item != null:
-		spawn_item(held_item, event.position)
-		self.held_item = null
+		var blocked = false
+		
+		var space = get_world_2d().direct_space_state
+		for intersection in space.intersect_point(event.position):
+			if intersection.collider.is_in_group("Blocks Drop"):
+				blocked = true
+		
+		if not blocked:
+			spawn_item(held_item, event.position)
+			self.held_item = null
+		else:
+			pass
 
 func movement(delta):
 	velocity.y += global.GRAVITY * delta
