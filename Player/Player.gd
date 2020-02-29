@@ -73,7 +73,6 @@ func spawn_item(item, pos):
 	#item_instance.type = held_item.type
 	
 	item_instance.position = pos
-	item_instance.use_parent_material = true
 	get_parent().add_child(item_instance)
 	if pos.distance_to(position) <= 70:
 		item_instance.delay()

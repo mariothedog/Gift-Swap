@@ -91,7 +91,6 @@ tile_data = PoolIntArray( 1114112, 1, 0, 1114113, 1, 0, 1114114, 1, 0, 1114115, 
 position = Vector2( 535.765, 476.743 )
 
 [node name="Item" parent="." instance=ExtResource( 12 )]
-use_parent_material = true
 position = Vector2( 780, 500 )
 
 [node name="Button" parent="." instance=ExtResource( 3 )]
