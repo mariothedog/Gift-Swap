@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Tiles/Grass.png" type="Texture" id=1]
 [ext_resource path="res://Levels/Level.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Items/Item.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Tiles/Wall.png" type="Texture" id=6]
 [ext_resource path="res://Objects/Door.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Levels/Drawing Node2D.gd" type="Script" id=8]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -113,11 +114,17 @@ tile_data = PoolIntArray( 851969, 2, 0, 851970, 2, 0, 851971, 2, 0, 851972, 2, 0
 [node name="Item" parent="." instance=ExtResource( 5 )]
 position = Vector2( 780, 500 )
 
-[node name="Button" parent="." instance=ExtResource( 3 )]
-position = Vector2( 115.547, 510.084 )
+[node name="Button" parent="." groups=[
+"Buttons",
+] instance=ExtResource( 3 )]
+position = Vector2( 115, 520 )
+connected_node_path = NodePath("../Door")
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
 position = Vector2( 535.765, 476.743 )
 
 [node name="Door" parent="." instance=ExtResource( 7 )]
 position = Vector2( 919, 484 )
+
+[node name="Drawing Node2D" type="Node2D" parent="."]
+script = ExtResource( 8 )
