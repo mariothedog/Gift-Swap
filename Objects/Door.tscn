@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 60 )
 
-[node name="Door" type="StaticBody2D"]
+[node name="Door" type="Area2D"]
 use_parent_material = true
 script = ExtResource( 2 )
 

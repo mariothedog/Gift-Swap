@@ -120,11 +120,11 @@ position = Vector2( 780, 500 )
 position = Vector2( 115, 520 )
 connected_node_path = NodePath("../Door")
 
-[node name="Player" parent="." instance=ExtResource( 4 )]
-position = Vector2( 535.765, 476.743 )
-
 [node name="Door" parent="." instance=ExtResource( 7 )]
 position = Vector2( 919, 484 )
 
 [node name="Drawing Node2D" type="Node2D" parent="."]
 script = ExtResource( 8 )
+
+[node name="Player" parent="." instance=ExtResource( 4 )]
+position = Vector2( 535.765, 476.743 )
