@@ -6,6 +6,7 @@
 extents = Vector2( 32, 60 )
 
 [node name="Door" type="StaticBody2D"]
+use_parent_material = true
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
