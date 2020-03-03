@@ -9,4 +9,4 @@ func _draw():
 		var connected_lowest_pos = button_lowest_pos + Vector2((button.connected_node.position - button.position).x, 0)
 		draw_line(button.position, button_lowest_pos, Color.red, 5, true)
 		draw_line(button_lowest_pos, connected_lowest_pos, Color.red, 5, true)
-		draw_line(connected_lowest_pos, button.connected_node.position, Color.red, 5, true)
+		draw_line(connected_lowest_pos, button.connected_node.position + button.connected_node.wire_offset, Color.red, 5, true)
