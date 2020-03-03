@@ -45,6 +45,7 @@ func _input(event):
 			self.held_item = null
 		else:
 			pass
+			# TODO particle effects
 
 func movement(delta):
 	velocity.y += global.GRAVITY * delta
