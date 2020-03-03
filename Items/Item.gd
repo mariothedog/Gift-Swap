@@ -1,10 +1,13 @@
 extends RigidBody2D
 
-var type = "Book"
+export (String, "Book", "Blue Book") var type
+
+func _ready():
+	$Sprite.texture = global.item_textures[type]
 
 func _on_Area2D_body_entered(body):
 	queue_free()
-	body.pick_up_item(self)
+	body.pick_up_item(type)
 
 func delay():
 	$Area2D/CollisionShape2D.disabled = true

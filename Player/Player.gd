@@ -72,15 +72,15 @@ func update_hud(item):
 	if item == null:
 		$"HUD/MarginContainer/Held Item Image".texture = null
 	else:
-		$"HUD/MarginContainer/Held Item Image".texture = load("res://Items/Book.png")
+		$"HUD/MarginContainer/Held Item Image".texture = global.item_textures[held_item]
 
-func pick_up_item(item):
-	self.held_item = item
+func pick_up_item(item_type):
+	self.held_item = item_type
 
 func spawn_item(item, pos):
 	var item_instance = item_scene.instance()
-	# TODO different item types
-	#item_instance.type = held_item.type
+	
+	item_instance.type = item
 	
 	item_instance.position = pos
 	get_parent().add_child(item_instance)
