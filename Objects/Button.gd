@@ -22,7 +22,8 @@ func _on_Press_Detection_body_entered(_body):
 		get_node(connected_node_path).activate()
 
 func _on_Press_Detection_body_exited(_body):
-	$Tween.interpolate_property($"Pushable Button", "position", $"Pushable Button".position, Vector2.ZERO, 0.1)
-	$Tween.start()
-	
-	pushed = false
+	if len($"Pushable Button/Press Detection".get_overlapping_bodies()) == 1:
+		$Tween.interpolate_property($"Pushable Button", "position", $"Pushable Button".position, Vector2.ZERO, 0.1)
+		$Tween.start()
+		
+		pushed = false
