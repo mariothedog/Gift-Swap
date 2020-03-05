@@ -7,14 +7,15 @@ anchor_left = 0.98
 anchor_top = 0.02
 anchor_right = 0.98
 anchor_bottom = 0.02
-margin_left = -67.52
+margin_left = -69.52
 margin_right = 0.47998
-margin_bottom = 68.0
+margin_bottom = 70.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Held Item Image" type="TextureRect" parent="MarginContainer"]
-margin_right = 68.0
-margin_bottom = 68.0
+margin_right = 70.0
+margin_bottom = 70.0
 expand = true
+stretch_mode = 5

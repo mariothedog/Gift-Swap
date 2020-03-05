@@ -40,8 +40,31 @@ func _input(event):
 			if intersection.collider.is_in_group("Blocks Drop"):
 				blocked = true
 		
+		var spawn_position = event.position
+		
+		var dir_blocked = []
+		
+		var item_texture_size = global.item_textures[held_item].get_size()
+		
+		var offset_x = Vector2(item_texture_size.x / 2, 0)
+		var offset_y = Vector2(0, item_texture_size.y / 2)
+
+		for i in range(-1, 2, 2):
+			for intersection in space.intersect_point(event.position + i * offset_x):
+				dir_blocked.append(true)
+				
+				spawn_position.x += -i * 15 # So the item doesn't get stuck in walls
+			
+			for intersection in space.intersect_point(event.position + i * offset_y):
+				dir_blocked.append(true)
+				
+				spawn_position.y += -i * 15 # So the item doesn't get stuck in the floor
+		
+		if len(dir_blocked) >= 2:
+			blocked = true
+		
 		if not blocked:
-			spawn_item(held_item, event.position)
+			spawn_item(held_item, spawn_position)#event.position)
 			self.held_item = null
 		else:
 			pass
