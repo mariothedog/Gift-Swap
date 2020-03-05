@@ -11,7 +11,7 @@ extents = Vector2( 32.5, 16 )
 extents = Vector2( 25, 12.5 )
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 25, 8 )
+extents = Vector2( 25, 2 )
 
 [node name="Button" type="KinematicBody2D" groups=[
 "Blocks Drop",
@@ -53,5 +53,3 @@ collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pushable Button/Press Detection"]
 shape = SubResource( 3 )
-[connection signal="body_entered" from="Pushable Button/Press Detection" to="." method="_on_Press_Detection_body_entered"]
-[connection signal="body_exited" from="Pushable Button/Press Detection" to="." method="_on_Press_Detection_body_exited"]

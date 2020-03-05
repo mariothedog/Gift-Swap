@@ -48,7 +48,7 @@ func _input(event):
 		
 		var offset_x = Vector2(item_texture_size.x / 2, 0)
 		var offset_y = Vector2(0, item_texture_size.y / 2)
-
+		
 		for i in range(-1, 2, 2):
 			for intersection in space.intersect_point(event.position + i * offset_x):
 				dir_blocked.append(true)
