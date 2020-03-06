@@ -56,15 +56,16 @@ func _input(event):
 				spawn_position.x += -i * 15 # So the item doesn't get stuck in walls
 			
 			for intersection in space.intersect_point(event.position + i * offset_y):
-				dir_blocked.append(true)
-				
-				spawn_position.y += -i * 15 # So the item doesn't get stuck in the floor
+				if not intersection.collider.get_parent().is_in_group("Buttons"):
+					dir_blocked.append(true)
+					
+					spawn_position.y += -i * 8 # So the item doesn't get stuck in the floor or the roof
 		
 		if len(dir_blocked) >= 2:
 			blocked = true
 		
 		if not blocked:
-			spawn_item(held_item, spawn_position)#event.position)
+			spawn_item(held_item, spawn_position)
 			self.held_item = null
 		else:
 			pass
