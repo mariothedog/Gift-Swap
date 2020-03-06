@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Objects/Door.png" type="Texture" id=1]
 [ext_resource path="res://Objects/Door.gd" type="Script" id=2]
+[ext_resource path="res://Objects/Door Back.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 60 )
@@ -10,8 +11,18 @@ extents = Vector2( 32, 60 )
 use_parent_material = true
 script = ExtResource( 2 )
 
+[node name="Sprite2" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+centered = false
+offset = Vector2( -32, -60 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 64, 120 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource( 1 )
+
+[node name="Slide Tween" type="Tween" parent="."]
