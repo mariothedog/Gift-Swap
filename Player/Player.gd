@@ -46,7 +46,7 @@ func _input(event):
 		
 		var item_texture_size = global.item_textures[held_item].get_size()
 		
-		var offset_x = Vector2(item_texture_size.x / 2, 0)
+		var offset_x = Vector2(item_texture_size.x / 2 + 5, 0)
 		var offset_y = Vector2(0, item_texture_size.y / 2)
 		
 		for i in range(-1, 2, 2):
