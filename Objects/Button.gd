@@ -28,6 +28,8 @@ func _physics_process(delta):
 			pushed = true
 			get_node(connected_node_path).activate()
 	else:
-		pushed = false
+		if pushed:
+			pushed = false
+			get_node(connected_node_path).unactivate()
 	
 	not_pressing_timer -= delta
