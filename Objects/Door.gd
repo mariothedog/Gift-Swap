@@ -27,5 +27,4 @@ func _tween_region_rect(size):
 	$Sprite.region_rect = rect
 
 func _on_Door_body_entered(_body):
-	print("Door used")
-	# TODO Go to next level
+	get_parent().next_level()
