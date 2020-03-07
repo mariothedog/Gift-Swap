@@ -63,7 +63,7 @@ func _input(event):
 					if not intersection.collider.get_parent().is_in_group("Buttons"):
 						dir_blocked.append(true)
 						
-						spawn_position.y += -i * 8 # So the item doesn't get stuck in the floor or the roof
+						spawn_position.y += -i * 8 # So the item doesn't get stuck in the floor or the ceiling
 			
 			if len(dir_blocked) >= 2:
 				blocked = true
