@@ -17,6 +17,5 @@ func next_level():
 	$"Level Transition".start()
 	
 	yield($"Level Transition", "tween_completed")
-	get_tree().change_scene("res://Levels/Level%s.tscn" % global.current_level)
-	#if get_tree().change_scene("res://Levels/Level%s.tscn" % global.current_level) != OK:
-	#	print_debug("An error occured while changing scene.")
+	if get_tree().change_scene("res://Levels/Level%s.tscn" % global.current_level) != OK:
+		print_debug("An error occured while changing scene.")
