@@ -28,7 +28,7 @@ func _tween_region_rect(size):
 	rect.size = size
 	$Sprite.region_rect = rect
 
-func _on_Door_body_entered(body):
+func _on_Door_body_entered(_body):
 	if open:
 		print("Door used")
 		# TODO Go to next level
