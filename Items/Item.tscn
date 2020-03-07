@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Items/Book.png" type="Texture" id=1]
 [ext_resource path="res://Items/Item.gd" type="Script" id=2]
+
+[sub_resource type="PhysicsMaterial" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 14, 8 )
@@ -14,6 +16,7 @@ use_parent_material = true
 collision_layer = 4
 collision_mask = 25
 mode = 2
+physics_material_override = SubResource( 3 )
 script = ExtResource( 2 )
 type = "Book"
 
