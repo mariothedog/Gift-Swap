@@ -126,9 +126,7 @@ position = Vector2( 780, 500 )
 [node name="Buttons" type="Node2D" parent="."]
 use_parent_material = true
 
-[node name="Button" parent="Buttons" groups=[
-"Buttons",
-] instance=ExtResource( 3 )]
+[node name="Button" parent="Buttons" instance=ExtResource( 3 )]
 position = Vector2( 260, 520 )
 connected_node_path = NodePath("../../Door")
 

@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Tiles/Grass.png" type="Texture" id=1]
 [ext_resource path="res://Levels/Level.gd" type="Script" id=2]
 [ext_resource path="res://Items/Item.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Objects/Wall Button.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Tiles/Wall.png" type="Texture" id=6]
 [ext_resource path="res://Objects/Door.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Levels/Drawing Node2D.gd" type="Script" id=8]
@@ -125,6 +126,10 @@ type = "Bouncy Ball"
 
 [node name="Buttons" type="Node2D" parent="."]
 use_parent_material = true
+
+[node name="Button" parent="Buttons" instance=ExtResource( 5 )]
+position = Vector2( 460, 230 )
+connected_node_path = NodePath("../../Door")
 
 [node name="Door" parent="." instance=ExtResource( 7 )]
 position = Vector2( 919, 484 )

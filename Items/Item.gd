@@ -3,7 +3,7 @@ extends RigidBody2D
 export (String, "Book", "Blue Book", "Bouncy Ball") var type
 
 onready var item_properties = {
-	"Bouncy Ball" : [1, false, 0.8, false]
+	"Bouncy Ball" : [1, false, 1, false]
 }
 
 func _ready():
