@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Tiles/Grass.png" type="Texture" id=1]
 [ext_resource path="res://Levels/Level.gd" type="Script" id=2]
@@ -86,6 +86,12 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 } ]
 2/z_index = 0
 
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 40, 360 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 600, 40 )
+
 [node name="Level0" type="Node2D"]
 material = SubResource( 2 )
 script = ExtResource( 2 )
@@ -128,3 +134,19 @@ script = ExtResource( 8 )
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
 position = Vector2( 535.765, 476.743 )
+
+[node name="Walls" type="StaticBody2D" parent="." groups=[
+"Blocks Drop",
+]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls"]
+position = Vector2( -40, 360 )
+shape = SubResource( 6 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls"]
+position = Vector2( 1064, 360 )
+shape = SubResource( 6 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Walls"]
+position = Vector2( 510, -40 )
+shape = SubResource( 7 )
