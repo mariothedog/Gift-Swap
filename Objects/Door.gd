@@ -6,6 +6,7 @@ onready var open_vector = Vector2(64, 120)
 onready var closed_vector = Vector2(64, 15)
 
 func activate():
+	$"Slide Tween".stop_all()
 	$"Slide Tween".interpolate_method(self, "_tween_region_rect", $Sprite.region_rect.size, closed_vector,
 	0.8, Tween.TRANS_CUBIC, Tween.EASE_IN)
 	$"Slide Tween".start()
@@ -15,6 +16,7 @@ func activate():
 		$CollisionShape2D.disabled = false
 
 func unactivate():
+	$"Slide Tween".stop_all()
 	$"Slide Tween".interpolate_method(self, "_tween_region_rect", $Sprite.region_rect.size, open_vector,
 	0.8, Tween.TRANS_CUBIC, Tween.EASE_IN)
 	$"Slide Tween".start()
