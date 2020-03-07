@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-export (String, "Book", "Blue Book") var type
+export (String, "Book", "Blue Book", "Bouncy Ball") var type
 
 func _ready():
 	$Sprite.texture = global.item_textures[type]
