@@ -35,34 +35,38 @@ func _input(event):
 	if event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_LEFT and held_item != null:
 		var blocked = false
 		
+		var spawn_position = event.position
+		
 		var space = get_world_2d().direct_space_state
-		for intersection in space.intersect_point(event.position):
+		for intersection in space.intersect_point(spawn_position):
 			if intersection.collider.is_in_group("Blocks Drop"):
 				blocked = true
 		
-		var spawn_position = event.position
-		
-		var dir_blocked = []
-		
-		var item_texture_size = global.item_textures[held_item].get_size()
-		
-		var offset_x = Vector2(item_texture_size.x / 2 + 5, 0)
-		var offset_y = Vector2(0, item_texture_size.y / 2)
-		
-		for i in range(-1, 2, 2):
-			for intersection in space.intersect_point(event.position + i * offset_x):
-				dir_blocked.append(true)
-				
-				spawn_position.x += -i * 15 # So the item doesn't get stuck in walls
+		if not blocked:
+			if spawn_position < Vector2.ZERO or spawn_position.x > 1024 or spawn_position.y > 600:
+				blocked = true
 			
-			for intersection in space.intersect_point(event.position + i * offset_y):
-				if not intersection.collider.get_parent().is_in_group("Buttons"):
+			var dir_blocked = []
+			
+			var item_texture_size = global.item_textures[held_item].get_size()
+			
+			var offset_x = Vector2(item_texture_size.x / 2 + 5, 0)
+			var offset_y = Vector2(0, item_texture_size.y / 2)
+			
+			for i in range(-1, 2, 2):
+				for intersection in space.intersect_point(event.position + i * offset_x):
 					dir_blocked.append(true)
 					
-					spawn_position.y += -i * 8 # So the item doesn't get stuck in the floor or the roof
-		
-		if len(dir_blocked) >= 2:
-			blocked = true
+					spawn_position.x += -i * 15 # So the item doesn't get stuck in walls
+				
+				for intersection in space.intersect_point(event.position + i * offset_y):
+					if not intersection.collider.get_parent().is_in_group("Buttons"):
+						dir_blocked.append(true)
+						
+						spawn_position.y += -i * 8 # So the item doesn't get stuck in the floor or the roof
+			
+			if len(dir_blocked) >= 2:
+				blocked = true
 		
 		if not blocked:
 			spawn_item(held_item, spawn_position)

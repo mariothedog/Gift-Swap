@@ -87,10 +87,10 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 2/z_index = 0
 
 [sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 40, 360 )
+extents = Vector2( 40, 280 )
 
 [sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 600, 40 )
+extents = Vector2( 520, 40 )
 
 [node name="Level0" type="Node2D"]
 material = SubResource( 2 )
@@ -135,18 +135,16 @@ script = ExtResource( 8 )
 [node name="Player" parent="." instance=ExtResource( 4 )]
 position = Vector2( 535.765, 476.743 )
 
-[node name="Walls" type="StaticBody2D" parent="." groups=[
-"Blocks Drop",
-]]
+[node name="Walls" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls"]
-position = Vector2( -40, 360 )
+position = Vector2( -35, 280 )
 shape = SubResource( 6 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls"]
-position = Vector2( 1064, 360 )
+position = Vector2( 1059, 280 )
 shape = SubResource( 6 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Walls"]
-position = Vector2( 510, -40 )
+position = Vector2( 510, -35 )
 shape = SubResource( 7 )
