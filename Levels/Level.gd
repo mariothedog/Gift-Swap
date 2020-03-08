@@ -1,8 +1,6 @@
 extends Node2D
 
 func _ready():
-	$ColorRect.color = Color(0.57, 0.66, 0.73);
-	
 	modulate.a = 0
 	
 	$"Level Transition".interpolate_property(self, "modulate", Color(1, 1, 1, 0), Color(1, 1, 1, 1),
