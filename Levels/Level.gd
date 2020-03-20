@@ -1,5 +1,7 @@
 extends Node2D
 
+const GRASS_TILE = 1
+
 func _ready():
 	modulate.a = 0
 	
@@ -23,7 +25,17 @@ func next_level():
 
 func _draw():
 	for button in get_tree().get_nodes_in_group("Buttons"):
-		var button_lowest_pos = button.position + Vector2(0, 40)
+		var button_tile_x = stepify(button.position.x, 32) # Snaps the button's x position to the TileMap.
+		var top_grass_tile_y
+		for cell_pos in $TileMap.get_used_cells():
+			var cell_world_pos = $TileMap.map_to_world(cell_pos)
+			var tile = $TileMap.get_cellv(cell_pos)
+			if cell_world_pos.x == button_tile_x and tile == GRASS_TILE:
+				if top_grass_tile_y == null or cell_world_pos.y < top_grass_tile_y:
+					top_grass_tile_y = cell_world_pos.y
+		
+		var button_lowest_pos = Vector2(button.position.x, top_grass_tile_y) + Vector2(0, 16)
+		
 		var connected_lowest_pos = button_lowest_pos + Vector2((button.connected_node.position - button.position).x, 0)
 		
 		var colour = Color.gray
