@@ -1,6 +1,7 @@
+tool
 extends RigidBody2D
 
-export (String, "Book", "Blue Book", "Bouncy Ball") var type
+export (String, "Book", "Blue Book", "Bouncy Ball") var type = "Book" setget set_texture
 
 onready var item_properties = {
 	"Bouncy Ball" : [1, false, 1, false]
@@ -9,12 +10,18 @@ onready var item_properties = {
 func _ready() -> void:
 	$Sprite.texture = global.item_textures[type]
 	
-	var properties = item_properties.get(type)
-	if properties:
-		physics_material_override.friction = properties[0]
-		physics_material_override.rough = properties[1]
-		physics_material_override.bounce = properties[2]
-		physics_material_override.absorbent = properties[3]
+	if not Engine.editor_hint:
+		var properties = item_properties.get(type)
+		if properties:
+			physics_material_override.friction = properties[0]
+			physics_material_override.rough = properties[1]
+			physics_material_override.bounce = properties[2]
+			physics_material_override.absorbent = properties[3]
+
+func set_texture(test):
+	type = test
+	if Engine.editor_hint and has_node("Sprite"):
+		$Sprite.texture = global.item_textures[type]
 
 func _on_Area2D_body_entered(body) -> void:
 	queue_free()
