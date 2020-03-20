@@ -9,7 +9,7 @@ var pushed = false
 
 var not_pressing_timer = 0
 
-func _physics_process(delta):
+func _physics_process(delta) -> void:
 	velocity.y += global.GRAVITY * delta
 	
 	velocity = move_and_slide(velocity, Vector2.UP)

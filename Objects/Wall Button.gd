@@ -11,18 +11,18 @@ var modulate_rgb = Vector3(1, 1, 1)
 
 var pushed_colour = 0.9
 
-func _physics_process(delta):
+func _physics_process(delta) -> void:
 	if $"Press Detection".get_overlapping_bodies():
 		not_pressing_timer = 0.21
 		modulate_rgb = modulate_rgb.move_toward(Vector3(pushed_colour, pushed_colour, pushed_colour), 0.02)
-		update_modulate()
+		_update_modulate()
 	else:
 		if not_pressing_timer >= 0:
 			modulate_rgb = modulate_rgb.move_toward(Vector3(pushed_colour, pushed_colour, pushed_colour), 0.02)
-			update_modulate()
+			_update_modulate()
 		else:
 			modulate_rgb = modulate_rgb.move_toward(Vector3(1, 1, 1), 0.02)
-			update_modulate()
+			_update_modulate()
 	
 	if modulate_rgb.x <= pushed_colour:
 		if not pushed:
@@ -35,7 +35,7 @@ func _physics_process(delta):
 	
 	not_pressing_timer -= delta
 
-func update_modulate():
+func _update_modulate() -> void:
 	$"Press Detection/Sprite".modulate.r = modulate_rgb.x
 	$"Press Detection/Sprite".modulate.g = modulate_rgb.y
 	$"Press Detection/Sprite".modulate.b = modulate_rgb.z

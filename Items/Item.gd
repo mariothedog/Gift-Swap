@@ -6,7 +6,7 @@ onready var item_properties = {
 	"Bouncy Ball" : [1, false, 1, false]
 }
 
-func _ready():
+func _ready() -> void:
 	$Sprite.texture = global.item_textures[type]
 	
 	var properties = item_properties.get(type)
@@ -16,13 +16,13 @@ func _ready():
 		physics_material_override.bounce = properties[2]
 		physics_material_override.absorbent = properties[3]
 
-func _on_Area2D_body_entered(body):
+func _on_Area2D_body_entered(body) -> void:
 	queue_free()
 	body.pick_up_item(type)
 
-func delay():
+func delay() -> void:
 	$Area2D/CollisionShape2D.disabled = true
 	$"Pickupable Timer".start()
 
-func _on_Pickupable_Timer_timeout():
+func _on_Pickupable_Timer_timeout() -> void:
 	$Area2D/CollisionShape2D.disabled = false

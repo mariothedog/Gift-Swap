@@ -9,14 +9,14 @@ const GROUND_FRICTION = 0.8
 var velocity = Vector2()
 var jump = false
 
-var held_item = null setget update_hud
+var held_item = null setget _update_hud
 
-func _physics_process(delta):
-	input()
-	movement(delta)
-	animate()
+func _physics_process(delta) -> void:
+	_get_input()
+	_movement(delta)
+	_animate()
 
-func input():
+func _get_input() -> void:
 	# Movement Input
 	var dir = 0
 	
@@ -31,7 +31,7 @@ func input():
 	
 	velocity.x = dir * SPEED
 
-func _input(event):
+func _input(event) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_LEFT and held_item != null:
 		var blocked = false
 		
@@ -69,13 +69,13 @@ func _input(event):
 				blocked = true
 		
 		if not blocked:
-			spawn_item(held_item, spawn_position)
+			_spawn_item(held_item, spawn_position)
 			self.held_item = null
 		else:
 			pass
 			# TODO particle effects
 
-func movement(delta):
+func _movement(delta) -> void:
 	velocity.y += global.GRAVITY * delta
 	
 	velocity = move_and_slide(velocity, Vector2.UP)
@@ -83,7 +83,7 @@ func movement(delta):
 	if jump and is_on_floor():
 		velocity.y = -JUMP_SPEED
 
-func animate():
+func _animate() -> void:
 	if abs(velocity.x) > 0:
 		$AnimatedSprite.flip_h = velocity.x < 0
 	
@@ -96,17 +96,17 @@ func animate():
 			else:
 				$AnimatedSprite.play("idle")
 
-func update_hud(item):
+func _update_hud(item) -> void:
 	held_item = item
 	if item == null:
 		$"HUD/MarginContainer/Held Item Image".texture = null
 	else:
 		$"HUD/MarginContainer/Held Item Image".texture = global.item_textures[held_item]
 
-func pick_up_item(item_type):
+func pick_up_item(item_type) -> void:
 	self.held_item = item_type
 
-func spawn_item(item, pos):
+func _spawn_item(item, pos) -> void:
 	var item_instance = item_scene.instance()
 	
 	item_instance.type = item

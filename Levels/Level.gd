@@ -2,17 +2,17 @@ extends Node2D
 
 const GRASS_TILE = 1
 
-func _ready():
+func _ready() -> void:
 	modulate.a = 0
 	
 	$"Level Transition".interpolate_property(self, "modulate", Color(1, 1, 1, 0), Color(1, 1, 1, 1),
 	0.4, Tween.TRANS_SINE, Tween.EASE_OUT)
 	$"Level Transition".start()
 
-func _process(_delta):
+func _process(_delta) -> void:
 	update()
 
-func next_level():
+func next_level() -> void:
 	global.current_level += 1
 	
 	$"Level Transition".interpolate_property(self, "modulate", modulate, Color(1, 1, 1, 0),
@@ -23,7 +23,7 @@ func next_level():
 	if get_tree().change_scene("res://Levels/Level%s.tscn" % global.current_level) != OK:
 		print_debug("An error occured while changing scene.")
 
-func _draw():
+func _draw() -> void:
 	for button in get_tree().get_nodes_in_group("Buttons"):
 		var button_tile_x = stepify(button.position.x, 32) # Snaps the button's x position to the TileMap.
 		var top_grass_tile_y
