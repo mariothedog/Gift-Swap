@@ -5,6 +5,18 @@ var wire_offset = Vector2(0, 40)
 onready var open_vector = Vector2(64, 120)
 onready var closed_vector = Vector2(64, 15)
 
+const MINIMUM_TIME_ON_DOOR_TO_USE = 0.2
+var time_on_door = 0
+var door_entered = false
+
+func _process(delta):
+	if get_overlapping_bodies():
+		time_on_door += delta
+	
+	if time_on_door >= MINIMUM_TIME_ON_DOOR_TO_USE and not door_entered:
+		door_entered = true
+		get_parent().next_level()
+
 func activate() -> void:
 	$"Slide Tween".stop_all()
 	$"Slide Tween".interpolate_method(self, "_tween_region_rect", $Sprite.region_rect.size, closed_vector,
@@ -28,5 +40,5 @@ func _tween_region_rect(size) -> void:
 	rect.size = size
 	$Sprite.region_rect = rect
 
-func _on_Door_body_entered(_body) -> void:
-	get_parent().next_level()
+func _on_Door_body_exited(_body) -> void:
+	time_on_door = 0
