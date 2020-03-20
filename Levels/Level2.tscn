@@ -1,22 +1,22 @@
 [gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://Tiles/Grass.png" type="Texture" id=1]
-[ext_resource path="res://Levels/Level.gd" type="Script" id=2]
-[ext_resource path="res://Objects/Button.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Items/Item.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Tiles/Wall.png" type="Texture" id=6]
-[ext_resource path="res://Objects/Door.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Tiles/Grass.png" type="Texture" id=2]
+[ext_resource path="res://Tiles/Wall.png" type="Texture" id=3]
+[ext_resource path="res://Levels/Level.gd" type="Script" id=4]
+[ext_resource path="res://Objects/Door.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Items/Item.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Objects/Wall Button.tscn" type="PackedScene" id=7]
 
-[sub_resource type="ConvexPolygonShape2D" id=1]
+[sub_resource type="ConvexPolygonShape2D" id=3]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 
-[sub_resource type="ConvexPolygonShape2D" id=2]
+[sub_resource type="ConvexPolygonShape2D" id=4]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 
-[sub_resource type="TileSet" id=3]
+[sub_resource type="TileSet" id=5]
 1/name = "Grass.png 1"
-1/texture = ExtResource( 1 )
+1/texture = ExtResource( 2 )
 1/tex_offset = Vector2( 0, 0 )
 1/modulate = Color( 1, 1, 1, 1 )
 1/region = Rect2( 0, 0, 32, 32 )
@@ -25,19 +25,19 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 1/navigation_offset = Vector2( 0, 0 )
 1/shape_offset = Vector2( 0, 0 )
 1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-1/shape = SubResource( 1 )
+1/shape = SubResource( 3 )
 1/shape_one_way = false
 1/shape_one_way_margin = 1.0
 1/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 1 ),
+"shape": SubResource( 3 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 1/z_index = 0
 2/name = "Wall.png 2"
-2/texture = ExtResource( 6 )
+2/texture = ExtResource( 3 )
 2/tex_offset = Vector2( 0, 0 )
 2/modulate = Color( 1, 1, 1, 1 )
 2/region = Rect2( 0, 0, 32, 32 )
@@ -46,26 +46,26 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 2/navigation_offset = Vector2( 0, 0 )
 2/shape_offset = Vector2( 0, 0 )
 2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-2/shape = SubResource( 2 )
+2/shape = SubResource( 4 )
 2/shape_one_way = false
 2/shape_one_way_margin = 1.0
 2/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 2 ),
+"shape": SubResource( 4 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 2/z_index = 0
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 40, 280 )
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 520, 40 )
 
-[node name="Level0" type="Node2D"]
-script = ExtResource( 2 )
+[node name="Level2" type="Node2D"]
+script = ExtResource( 4 )
 __meta__ = {
 "_edit_horizontal_guides_": [ -227.293 ]
 }
@@ -84,7 +84,7 @@ __meta__ = {
 "Blocks Drop",
 ]]
 show_behind_parent = true
-tile_set = SubResource( 3 )
+tile_set = SubResource( 5 )
 cell_size = Vector2( 32, 32 )
 format = 1
 tile_data = PoolIntArray( 1114112, 1, 0, 1114113, 1, 0, 1114114, 1, 0, 1114115, 1, 0, 1114116, 1, 0, 1114117, 1, 0, 1114118, 1, 0, 1114119, 1, 0, 1114120, 1, 0, 1114121, 1, 0, 1114122, 1, 0, 1114123, 1, 0, 1114124, 1, 0, 1114125, 1, 0, 1114126, 1, 0, 1114127, 1, 0, 1114128, 1, 0, 1114129, 1, 0, 1114130, 1, 0, 1114131, 1, 0, 1114132, 1, 0, 1114133, 1, 0, 1114134, 1, 0, 1114135, 1, 0, 1114136, 1, 0, 1114137, 1, 0, 1114138, 1, 0, 1114139, 1, 0, 1114140, 1, 0, 1114141, 1, 0, 1114142, 1, 0, 1114143, 1, 0, 1179648, 1, 0, 1179649, 1, 0, 1179650, 1, 0, 1179651, 1, 0, 1179652, 1, 0, 1179653, 1, 0, 1179654, 1, 0, 1179655, 1, 0, 1179656, 1, 0, 1179657, 1, 0, 1179658, 1, 0, 1179659, 1, 0, 1179660, 1, 0, 1179661, 1, 0, 1179662, 1, 0, 1179663, 1, 0, 1179664, 1, 0, 1179665, 1, 0, 1179666, 1, 0, 1179667, 1, 0, 1179668, 1, 0, 1179669, 1, 0, 1179670, 1, 0, 1179671, 1, 0, 1179672, 1, 0, 1179673, 1, 0, 1179674, 1, 0, 1179675, 1, 0, 1179676, 1, 0, 1179677, 1, 0, 1179678, 1, 0, 1179679, 1, 0 )
@@ -93,22 +93,23 @@ tile_data = PoolIntArray( 1114112, 1, 0, 1114113, 1, 0, 1114114, 1, 0, 1114115, 
 show_behind_parent = true
 use_parent_material = true
 
-[node name="Item" parent="Items" instance=ExtResource( 5 )]
-position = Vector2( 780, 500 )
+[node name="Item" parent="Items" instance=ExtResource( 6 )]
+position = Vector2( 790, 430 )
+type = "Bouncy Ball"
 
 [node name="Buttons" type="Node2D" parent="."]
 show_behind_parent = true
 use_parent_material = true
 
-[node name="Button" parent="Buttons" instance=ExtResource( 3 )]
-position = Vector2( 450, 530 )
-connected_node_path = NodePath("../../Door")
+[node name="Button" parent="Buttons" instance=ExtResource( 7 )]
+position = Vector2( 460, 230 )
+connected_node_path = NodePath("../../../Level1/Door")
 
-[node name="Door" parent="." instance=ExtResource( 7 )]
+[node name="Door" parent="." instance=ExtResource( 5 )]
 show_behind_parent = true
 position = Vector2( 919, 484 )
 
-[node name="Player" parent="." instance=ExtResource( 4 )]
+[node name="Player" parent="." instance=ExtResource( 1 )]
 show_behind_parent = true
 position = Vector2( 535.765, 476.743 )
 
@@ -116,14 +117,14 @@ position = Vector2( 535.765, 476.743 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls"]
 position = Vector2( -35, 280 )
-shape = SubResource( 4 )
+shape = SubResource( 6 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls"]
 position = Vector2( 1059, 280 )
-shape = SubResource( 4 )
+shape = SubResource( 6 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Walls"]
 position = Vector2( 510, -35 )
-shape = SubResource( 5 )
+shape = SubResource( 7 )
 
 [node name="Level Transition" type="Tween" parent="."]

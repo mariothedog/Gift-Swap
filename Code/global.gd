@@ -9,4 +9,4 @@ var item_textures = {
 	"Bouncy Ball" : load("res://Items/Bouncy Ball.png")
 	}
 
-var current_level = 0
+var current_level = 1
