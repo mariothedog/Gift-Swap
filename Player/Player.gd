@@ -115,7 +115,12 @@ func pick_up_item(item_type) -> void:
 func _spawn_item(item, pos) -> void:
 	# Spawn portal at the player
 	var spawn_item_effect_player = spawn_item_effect_scene.instance()
-	spawn_item_effect_player.position = position
+	var offset = Vector2()
+	if $AnimatedSprite.flip_h:
+		offset = Vector2(-25, 0)
+	else:
+		offset = Vector2(25, 0)
+	spawn_item_effect_player.position = position + offset
 	get_parent().get_node("Effects").add_child(spawn_item_effect_player)
 	
 	# Spawn portal at the item spawn location
@@ -124,10 +129,8 @@ func _spawn_item(item, pos) -> void:
 	get_parent().get_node("Effects").add_child(spawn_item_effect)
 	
 	var item_instance = item_scene.instance()
-	
 	item_instance.type = item
-	
-	item_instance.position = position
+	item_instance.position = position + offset
 	get_parent().get_node("Items").add_child(item_instance)
 	item_instance.delay()
 	
