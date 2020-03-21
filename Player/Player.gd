@@ -1,14 +1,18 @@
 extends KinematicBody2D
 
+# Preload resources
 var item_scene = preload("res://Items/Item.tscn")
 
+# Movement constants
 const SPEED = 250
 const JUMP_SPEED = 400
 const GROUND_FRICTION = 0.8
 
+# Movement variables
 var velocity = Vector2()
 var jump = false
 
+# Item variables
 var held_item = null setget _update_hud
 
 func _physics_process(delta) -> void:
