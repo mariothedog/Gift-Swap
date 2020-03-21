@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 # Preload resources
 var item_scene = preload("res://Items/Item.tscn")
-var block_item_effect_scene = preload("res://Effects/Block Item Effect.tscn")
+var block_item_effect_scene = preload("res://Effects/Block Item Effect/Block Item Effect.tscn")
 
 # Movement constants
 const SPEED = 250
