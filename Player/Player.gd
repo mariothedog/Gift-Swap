@@ -61,12 +61,13 @@ func _input(event) -> void:
 			
 			for i in range(-1, 2, 2):
 				for intersection in space.intersect_point(event.position + i * offset_x):
-					dir_blocked.append(true)
-					
-					spawn_position.x += -i * 15 # So the item doesn't get stuck in walls
+					if intersection.collider.is_in_group("Blocks drop"):
+						dir_blocked.append(true)
+						
+						spawn_position.x += -i * 15 # So the item doesn't get stuck in walls
 				
 				for intersection in space.intersect_point(event.position + i * offset_y):
-					if not intersection.collider.get_parent().is_in_group("Buttons"):
+					if intersection.collider.is_in_group("Blocks drop") and not intersection.collider.get_parent().is_in_group("Buttons"):
 						dir_blocked.append(true)
 						
 						spawn_position.y += -i * 8 # So the item doesn't get stuck in the floor or the ceiling
@@ -137,9 +138,6 @@ func _spawn_item(item, pos) -> void:
 	# Remove portals
 	spawn_item_effect_player.fade()
 	spawn_item_effect.fade()
-	
-	if pos.distance_to(position) <= 70:
-		item_instance.delay()
 
 func _spawn_block_item_effect(pos) -> void:
 	var block_item_effect = block_item_effect_scene.instance()

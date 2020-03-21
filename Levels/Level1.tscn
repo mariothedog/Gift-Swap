@@ -91,6 +91,7 @@ tile_data = PoolIntArray( 1114112, 1, 0, 1114113, 1, 0, 1114114, 1, 0, 1114115, 
 
 [node name="Effects" type="Node2D" parent="."]
 show_behind_parent = true
+position = Vector2( 0, 1 )
 
 [node name="Items" type="Node2D" parent="."]
 show_behind_parent = true
