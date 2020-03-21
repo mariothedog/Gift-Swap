@@ -91,14 +91,12 @@ tile_data = PoolIntArray( 1114112, 1, 0, 1114113, 1, 0, 1114114, 1, 0, 1114115, 
 
 [node name="Items" type="Node2D" parent="."]
 show_behind_parent = true
-use_parent_material = true
 
 [node name="Item" parent="Items" instance=ExtResource( 3 )]
 position = Vector2( 780, 500 )
 
 [node name="Buttons" type="Node2D" parent="."]
 show_behind_parent = true
-use_parent_material = true
 
 [node name="Button" parent="Buttons" instance=ExtResource( 5 )]
 position = Vector2( 450, 530 )
