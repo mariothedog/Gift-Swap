@@ -3,6 +3,7 @@ extends KinematicBody2D
 # Preload resources
 var item_scene = preload("res://Items/Item.tscn")
 var block_item_effect_scene = preload("res://Effects/Block Item Effect/Block Item Effect.tscn")
+var spawn_item_effect_scene = preload("res://Effects/Spawn Item Effect/Spawn Item Effect.tscn")
 
 # Movement constants
 const SPEED = 250
@@ -111,16 +112,36 @@ func pick_up_item(item_type) -> void:
 	self.held_item = item_type
 
 func _spawn_item(item, pos) -> void:
+	# Spawn portal at the player
+	var spawn_item_effect_player = spawn_item_effect_scene.instance()
+	spawn_item_effect_player.position = position
+	get_parent().get_node("Effects").add_child(spawn_item_effect_player)
+	
+	# Spawn portal at the item spawn location
+	var spawn_item_effect = spawn_item_effect_scene.instance()
+	spawn_item_effect.position = pos
+	get_parent().get_node("Effects").add_child(spawn_item_effect)
+	
 	var item_instance = item_scene.instance()
 	
 	item_instance.type = item
 	
+	item_instance.position = position
+	get_parent().get_node("Items").add_child(item_instance)
+	item_instance.delay()
+	
+	yield(item_instance, "delay_finished")
+	
 	item_instance.position = pos
-	get_parent().add_child(item_instance)
+	
+	# Remove portals
+	spawn_item_effect_player.fade()
+	spawn_item_effect.fade()
+	
 	if pos.distance_to(position) <= 70:
 		item_instance.delay()
 
 func _spawn_block_item_effect(pos) -> void:
 	var block_item_effect = block_item_effect_scene.instance()
 	block_item_effect.position = pos
-	get_parent().add_child(block_item_effect)
+	get_parent().get_node("Effects").add_child(block_item_effect)

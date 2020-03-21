@@ -1,6 +1,8 @@
 tool
 extends RigidBody2D
 
+signal delay_finished
+
 export (String, "Book", "Blue Book", "Bouncy Ball") var type = "Book" setget set_texture
 
 onready var item_properties = {
@@ -29,7 +31,19 @@ func _on_Area2D_body_entered(body) -> void:
 
 func delay() -> void:
 	$Area2D/CollisionShape2D.disabled = true
-	$"Pickupable Timer".start()
-
-func _on_Pickupable_Timer_timeout() -> void:
+	gravity_scale = 0
+	
+	$Tween.interpolate_property($Sprite, "modulate",
+	Color(1, 1, 1, 1), Color(1, 1, 1, 0), 0.5)
+	$Tween.start()
+	
+	yield($Tween, "tween_completed")
+	
 	$Area2D/CollisionShape2D.disabled = false
+	gravity_scale = 1
+	
+	emit_signal("delay_finished")
+	
+	$Tween.interpolate_property($Sprite, "modulate",
+	Color(1, 1, 1, 0), Color(1, 1, 1, 1), 0.5)
+	$Tween.start()
