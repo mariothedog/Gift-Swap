@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-var item_scene = load("res://Items/Item.tscn")
+var item_scene = preload("res://Items/Item.tscn")
 
 const SPEED = 250
 const JUMP_SPEED = 400
