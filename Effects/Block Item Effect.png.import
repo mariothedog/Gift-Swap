@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Stop Teleporting Item.png-319f1e0794c9dcac2455ec393cf31ce6.stex"
+path="res://.import/Block Item Effect.png-81603263a16fded71618fa5d200815a1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI/Stop Teleporting Item.png"
-dest_files=[ "res://.import/Stop Teleporting Item.png-319f1e0794c9dcac2455ec393cf31ce6.stex" ]
+source_file="res://Effects/Block Item Effect.png"
+dest_files=[ "res://.import/Block Item Effect.png-81603263a16fded71618fa5d200815a1.stex" ]
 
 [params]
 

@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 # Preload resources
 var item_scene = preload("res://Items/Item.tscn")
+var block_item_effect_scene = preload("res://Effects/Block Item Effect.tscn")
 
 # Movement constants
 const SPEED = 250
@@ -76,8 +77,7 @@ func _input(event) -> void:
 			_spawn_item(held_item, spawn_position)
 			self.held_item = null
 		else:
-			pass
-			# TODO particle effects
+			_spawn_block_item_effect(event.position)
 
 func _movement(delta) -> void:
 	velocity.y += global.GRAVITY * delta
@@ -119,3 +119,8 @@ func _spawn_item(item, pos) -> void:
 	get_parent().add_child(item_instance)
 	if pos.distance_to(position) <= 70:
 		item_instance.delay()
+
+func _spawn_block_item_effect(pos) -> void:
+	var block_item_effect = block_item_effect_scene.instance()
+	block_item_effect.position = pos
+	get_parent().add_child(block_item_effect)
